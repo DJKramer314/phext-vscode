@@ -1,7 +1,7 @@
 {
   "name": "phext",
   "displayName": "phext",
-  "description": "",
+  "description": "This extension allows you to interact with a sparse 9D matrix of scrolls. Welcome to the Exocortex\nSee https://www.phext.io/ for more information.",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.100.0"
@@ -12,10 +12,26 @@
   "activationEvents": [],
   "browser": "./dist/web/extension.js",
   "contributes": {
-    "commands": [
+    "languages": [
       {
-        "command": "phext.helloWorld",
-        "title": "Hello World"
+        "id": "phext",
+        "extensions": [
+          ".phext"
+        ],
+        "aliases": [
+          "Phext"
+        ]
+      }
+    ],
+    "customEditors": [
+      {
+        "viewType": "phext.editor",
+        "displayName": "Phext Editor",
+        "selector": [
+          {
+            "filenamePattern": "*.phext"
+          }
+        ]
       }
     ]
   },
@@ -33,19 +49,22 @@
     "run-in-browser": "vscode-test-web --browserType=chromium --extensionDevelopmentPath=. ."
   },
   "devDependencies": {
-    "@types/vscode": "^1.100.0",
-    "@types/mocha": "^10.0.10",
+    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@types/assert": "^1.5.11",
-    "eslint": "^9.25.1",
+    "@types/mocha": "^10.0.10",
+    "@types/vscode": "^1.100.0",
     "@typescript-eslint/eslint-plugin": "^8.31.1",
     "@typescript-eslint/parser": "^8.31.1",
-    "mocha": "^11.1.0",
-    "typescript": "^5.8.3",
     "@vscode/test-web": "^0.0.69",
+    "assert": "^2.1.0",
     "esbuild": "^0.25.3",
+    "eslint": "^9.25.1",
     "glob": "^11.0.2",
+    "mocha": "^11.1.0",
     "npm-run-all": "^4.1.5",
-    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
-    "assert": "^2.1.0"
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "buffer": "^6.0.3"
   }
 }
