@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { Phext, Coordinate } from './phext';
+import { Phext, Coordinate } from './Phext';
 
 export class PhextEditorProvider implements vscode.CustomTextEditorProvider {
 
