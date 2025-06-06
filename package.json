@@ -1,8 +1,8 @@
 {
-  "name": "phext",
-  "displayName": "phext",
+  "name": "phext-vscode",
+  "displayName": "phext-vscode",
   "description": "This extension allows you to interact with a sparse 9D matrix of scrolls. Welcome to the Exocortex\nSee https://www.phext.io/ for more information.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.100.0"
   },
@@ -26,7 +26,7 @@
     "customEditors": [
       {
         "viewType": "phext.editor",
-        "displayName": "Phext Editor",
+        "displayName": "Phext Editor for VS Code",
         "selector": [
           {
             "filenamePattern": "*.phext"
