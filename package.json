@@ -2,7 +2,7 @@
   "name": "phext-vscode",
   "displayName": "phext-vscode",
   "description": "This extension allows you to interact with a sparse 9D matrix of scrolls. Welcome to the Exocortex\nSee https://www.phext.io/ for more information.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "engines": {
     "vscode": "^1.100.0"
   },

@@ -52,15 +52,15 @@ export class Phext {
 
 	default_coordinate = (): Coordinate => {
 		return new Coordinate();
-	}
+	};
 
 	create_positioned_scroll = (coord: Coordinate, scroll: string, next: string = "", remaining: string = ""): PositionedScroll => {
 		return new PositionedScroll(coord, scroll, new Coordinate(next), remaining);
-	}
+	};
 
 	check_for_cowbell = (phext: string): boolean => {
 		for (var i = 0; i < phext.length; ++i) {
-			if (phext[i] == this.MORE_COWBELL) {
+			if (phext[i] === this.MORE_COWBELL) {
 				return true;
 			}
 		}
@@ -81,7 +81,7 @@ export class Phext {
   		while (subspace_index < max) {
     		var next = subspace[subspace_index];
 
-    		if (stage == 0) {
+    		if (stage === 0) {
       			if (walker.equals(target)) {
         			stage = 1;
         			start = subspace_index;
@@ -95,7 +95,7 @@ export class Phext {
     		}
 
     		if (stage < 2 && walker.greater_than(target)) {
-				if (stage == 0) {
+				if (stage === 0) {
         			start = subspace_index - 1;
       			}
 				end = subspace_index - 1;
@@ -104,27 +104,27 @@ export class Phext {
     		}
 
     		if (this.is_phext_break(next)) {
-      			if (next == this.SCROLL_BREAK)     { walker.scroll_break();     }
-      			if (next == this.SECTION_BREAK)    { walker.section_break();    }
-      			if (next == this.CHAPTER_BREAK)    { walker.chapter_break();    }
-      			if (next == this.BOOK_BREAK)       { walker.book_break();       }
-      			if (next == this.VOLUME_BREAK)     { walker.volume_break();     }
-      			if (next == this.COLLECTION_BREAK) { walker.collection_break(); }
-      			if (next == this.SERIES_BREAK)     { walker.series_break();     }
-      			if (next == this.SHELF_BREAK)      { walker.shelf_break();      }
-      			if (next == this.LIBRARY_BREAK)    { walker.library_break();    }
+      			if (next === this.SCROLL_BREAK)     { walker.scroll_break();     }
+      			if (next === this.SECTION_BREAK)    { walker.section_break();    }
+      			if (next === this.CHAPTER_BREAK)    { walker.chapter_break();    }
+      			if (next === this.BOOK_BREAK)       { walker.book_break();       }
+      			if (next === this.VOLUME_BREAK)     { walker.volume_break();     }
+      			if (next === this.COLLECTION_BREAK) { walker.collection_break(); }
+      			if (next === this.SERIES_BREAK)     { walker.series_break();     }
+      			if (next === this.SHELF_BREAK)      { walker.shelf_break();      }
+      			if (next === this.LIBRARY_BREAK)    { walker.library_break();    }
     		}
 
     		++subspace_index;
   		}
 
-  		if (stage == 1 && walker.equals(target)) {
+  		if (stage === 1 && walker.equals(target)) {
 			end = max;
 			insertion = walker;
     		stage = 2;
   		}
 
-  		if (stage == 0) {
+  		if (stage === 0) {
     		start = max;
     		end = max;
 			insertion = walker;
@@ -141,7 +141,7 @@ export class Phext {
 
 	create_summary = (phext: string): string => {
   		var limit = 32;
-		if (phext.length == 0) { return "No Summary"; }
+		if (phext.length === 0) { return "No Summary"; }
 
 		const parts = this.phokenize(phext);
 		const text = parts[0].scroll.split('\n')[0];
@@ -271,12 +271,12 @@ export class Phext {
 		 	if (phoken.coord.less_than(coord) || phoken.coord.equals(coord)) {
 				best = phoken.coord;
 		  	}
-		  	if (phoken.coord == coord) {
+		  	if (phoken.coord === coord) {
 				matched = true;
 		  	}
 		}
 
-		if (matched == false) {
+		if (matched === false) {
 		  fetch_coord = best;
 		}
 		let index = this.dephokenize(output);
@@ -288,7 +288,7 @@ export class Phext {
 		const phokens = this.phokenize(phext);
 		var coord = new Coordinate();
 		var result = "";
-		var inserted = scroll.length == 0;
+		var inserted = scroll.length === 0;
 		
 		for (var i = 0; i < phokens.length; ++i) {
 			var ith = phokens[i];
@@ -299,7 +299,7 @@ export class Phext {
 					inserted = true;
 				}
 			} else {
-				if (inserted == false && ith.coord.greater_than(location))
+				if (inserted === false && ith.coord.greater_than(location))
 				{
 					result += coord.advance_to(location);
 					result += scroll;
@@ -313,7 +313,7 @@ export class Phext {
 			}
 		}
 		
-		if (inserted == false)
+		if (inserted === false)
 		{
 			result += coord.advance_to(location);
 			result += scroll;
@@ -360,15 +360,15 @@ export class Phext {
   		while (pi < pmax) {
     		var test = phext[pi];
     		var dimension_break = false;
-    		if (test == this.SCROLL_BREAK)     { location.scroll_break();     dimension_break = true; }
-    		if (test == this.SECTION_BREAK)    { location.section_break();    dimension_break = true; }
-    		if (test == this.CHAPTER_BREAK)    { location.chapter_break();    dimension_break = true; }
-    		if (test == this.BOOK_BREAK)       { location.book_break();       dimension_break = true; }
-    		if (test == this.VOLUME_BREAK)     { location.volume_break();     dimension_break = true; }
-    		if (test == this.COLLECTION_BREAK) { location.collection_break(); dimension_break = true; }
-    		if (test == this.SERIES_BREAK)     { location.series_break();     dimension_break = true; }
-    		if (test == this.SHELF_BREAK)      { location.shelf_break();      dimension_break = true; }
-    		if (test == this.LIBRARY_BREAK)    { location.library_break();    dimension_break = true; }
+    		if (test === this.SCROLL_BREAK)     { location.scroll_break();     dimension_break = true; }
+    		if (test === this.SECTION_BREAK)    { location.section_break();    dimension_break = true; }
+    		if (test === this.CHAPTER_BREAK)    { location.chapter_break();    dimension_break = true; }
+    		if (test === this.BOOK_BREAK)       { location.book_break();       dimension_break = true; }
+    		if (test === this.VOLUME_BREAK)     { location.volume_break();     dimension_break = true; }
+    		if (test === this.COLLECTION_BREAK) { location.collection_break(); dimension_break = true; }
+    		if (test === this.SERIES_BREAK)     { location.series_break();     dimension_break = true; }
+    		if (test === this.SHELF_BREAK)      { location.shelf_break();      dimension_break = true; }
+    		if (test === this.LIBRARY_BREAK)    { location.library_break();    dimension_break = true; }
 
     		if (dimension_break) {
       			if (output.length > 0) {
@@ -397,14 +397,14 @@ export class Phext {
 		var temp = phext;
 		while (true) {
 			var ith_result = this.next_scroll(temp, coord);
-			if (ith_result.scroll.length == 0)
+			if (ith_result.scroll.length === 0)
 			{
 				break;
 			}
 			result.push(ith_result);
 			coord = ith_result.next;
 			temp = ith_result.remaining;
-			if (ith_result.remaining.length == 0) {
+			if (ith_result.remaining.length === 0) {
 				break;
 			}
 		}
@@ -431,8 +431,8 @@ export class Phext {
 			const tr_lte = have_left && have_right && (tr[tri].coord.less_than(tl[tli].coord) ||
 			               tr[tri].coord.equals(tl[tli].coord));
 
-    		const pick_left = have_left && (have_right == false || tl_lte);
-    		const pick_right = have_right && (have_left == false || tr_lte);
+    		const pick_left = have_left && (have_right === false || tl_lte);
+    		const pick_right = have_right && (have_left === false || tr_lte);
 
     		if (pick_left) {
       			result += this.append_scroll(tl[tli], coord);
@@ -445,7 +445,7 @@ export class Phext {
     			++tri;
     		}
 
-    		if (pick_left == false && pick_right == false) {
+    		if (pick_left === false && pick_right === false) {
     			break;
     		}
   		}
@@ -541,7 +541,7 @@ export class Phext {
   		for (var i = 0; i < pl.length; ++i) {
 			var token = pl[i];
     		var do_append = false;
-    		if (pri == max) {
+    		if (pri === max) {
       			do_append = true;
     		}
 
@@ -564,16 +564,16 @@ export class Phext {
 	};
 
 	is_phext_break = (byte: string): boolean => {
-		return byte == this.LINE_BREAK ||
-				byte == this.SCROLL_BREAK ||
-				byte == this.SECTION_BREAK ||
-				byte == this.CHAPTER_BREAK ||
-				byte == this.BOOK_BREAK ||
-				byte == this.VOLUME_BREAK ||
-				byte == this.COLLECTION_BREAK ||
-				byte == this.SERIES_BREAK ||
-				byte == this.SHELF_BREAK ||
-				byte == this.LIBRARY_BREAK;
+		return byte === this.LINE_BREAK ||
+				byte === this.SCROLL_BREAK ||
+				byte === this.SECTION_BREAK ||
+				byte === this.CHAPTER_BREAK ||
+				byte === this.BOOK_BREAK ||
+				byte === this.VOLUME_BREAK ||
+				byte === this.COLLECTION_BREAK ||
+				byte === this.SERIES_BREAK ||
+				byte === this.SHELF_BREAK ||
+				byte === this.LIBRARY_BREAK;
 	};
 
 	normalize = (phext: string): string => {
@@ -589,9 +589,9 @@ export class Phext {
 		for (var i = 0; i < address.length; ++i) {
 			var byte = address[i];
 
-			if (byte == this.ADDRESS_MICRO_BREAK ||
-				byte == this.ADDRESS_MACRO_BREAK ||
-				byte == this.ADDRESS_MACRO_ALT) {
+			if (byte === this.ADDRESS_MICRO_BREAK ||
+				byte === this.ADDRESS_MACRO_BREAK ||
+				byte === this.ADDRESS_MACRO_ALT) {
 				switch (index) {
 				  case 1: result.z.library = value; index += 1; break;
 				  case 2: result.z.shelf = value; index += 1; break;
@@ -608,7 +608,7 @@ export class Phext {
 			if (byte >= '0' && byte <= '9')
 			{
 				value = exp * value + parseInt(byte);
-				if (index == 0) { index = 1; }
+				if (index === 0) { index = 1; }
 			}
 		}
 
@@ -643,15 +643,15 @@ export class Coordinate {
 	}
 
 	equals = (other: Coordinate): boolean => {
-		return this.z.library == other.z.library &&
-		       this.z.shelf == other.z.shelf &&
-			   this.z.series == other.z.series &&
-			   this.y.collection == other.y.collection &&
-			   this.y.volume == other.y.volume &&
-			   this.y.book == other.y.book &&
-			   this.x.chapter == other.x.chapter &&
-			   this.x.section == other.x.section &&
-			   this.x.scroll == other.x.scroll;
+		return this.z.library === other.z.library &&
+		       this.z.shelf === other.z.shelf &&
+			   this.z.series === other.z.series &&
+			   this.y.collection === other.y.collection &&
+			   this.y.volume === other.y.volume &&
+			   this.y.book === other.y.book &&
+			   this.x.chapter === other.x.chapter &&
+			   this.x.section === other.x.section &&
+			   this.x.scroll === other.x.scroll;
 	};
 
 	less_than = (other: Coordinate): boolean => {
@@ -735,7 +735,7 @@ export class Coordinate {
 
 	to_urlencoded = (): string => {
 		return this.to_string().replace(/\//g, ';');
-	}
+	};
 
 	advance_coordinate = (index: number): number => {
 		var next = index + 1;
